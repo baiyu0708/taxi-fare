@@ -16,7 +16,7 @@ module.exports = function main(inputs) {
     }
 
     function parkFare(parkTimeMin) {
-        return 0;
+        return parkTimeMin * 0.25;
     }
 
     return Math.round(distanceFare(inputs.distance) + parkFare(inputs.parkTime));
