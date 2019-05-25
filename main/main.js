@@ -10,14 +10,26 @@
  */
 module.exports = function main(inputs) {
 
+    return Math.round(distanceFare(inputs.distance) + parkFare(inputs.parkTime));
+
     function distanceFare(distanceKm) {
         let baseFare = 6;
-        return baseFare;
+        return baseFare + normalDistance(distanceKm) * 0.8;
     }
 
     function parkFare(parkTimeMin) {
         return parkTimeMin * 0.25;
     }
 
-    return Math.round(distanceFare(inputs.distance) + parkFare(inputs.parkTime));
+    function normalDistance(distanceKm) {
+        if (distanceKm <= 2) {
+            return 0;
+        }
+
+        if (distanceKm <= 8) {
+            return distanceKm - 2;
+        }
+
+        return distanceKm - 8;
+    }
 };
